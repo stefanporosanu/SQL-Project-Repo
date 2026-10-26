@@ -1,0 +1,252 @@
+SELECT * FROM Customers;
+
+select * from products;
+
+select * FRom CATEgories;
+
+SELECT CustomerName, City, Country 
+FROM Customers;
+
+SELECT ProductID, ProductName 
+FROM Products;
+
+SELECT Country 
+FROM Customers;
+
+SELECT Distinct Country 
+FROM Customers;
+
+select count(customerid) -- count the rows
+from customers;
+
+-- number of different countries
+select count(distinct country)
+from customers;
+
+SELECT COUNT(DISTINCT CustomerID) 
+FROM Customers;
+
+--  Write an SQL query to return these details from the Employees table.
+SELECT firstname, lastname, birthdate
+FROM employees;
+
+-- Write an SQL query to retrieve this information from the Customers table.
+SELECT customername, address, city
+FROM customers;
+
+-- Write an SQL query to return all unique city names from the Suppliers table.
+Select distinct city from suppliers;
+ 
+
+-- Write an SQL query to count the number of distinct cities in the Customers table.
+select count (distinct city) from customers;
+ 
+
+SELECT *
+from customers
+WHERE country = 'Germany';
+
+SELECT *
+from customers
+WHERE country = 'Brazil';
+
+select *
+from customers
+where customerid = 1;
+
+select customername, city, country
+from customers
+where city = 'Berlin';
+
+select * 
+from shippers
+where shippername = 'Speedy Express';
+
+SELECT * FROM Products
+WHERE Price > 100;
+
+SELECT * FROM Products
+WHERE Price < 10;
+
+SELECT * FROM Orders
+WHERE OrderDate > '1996-07-30';
+
+
+SELECT count(*) FROM Products
+WHERE Price < 10;
+
+select customername, country
+from customers
+where country != 'UK';
+
+select customername, country
+from customers
+where country <> 'UK';
+
+--  Write an SQL query to return all customers from London.
+select *
+from customers
+where city = 'London';
+ 
+
+-- Write an SQL query to return the number of customers from the USA.
+select count(*) from customers 
+where country = 'USA';
+ 
+
+-- Write an SQL query to return all customers whose CustomerID is equal to or greater than 15.
+SELECT * FROM Customers 
+WHERE CustomerID >= 15;
+
+SELECT * FROM Customers
+WHERE Country = 'Germany' AND City = 'Berlin';
+
+SELECT customername, city, country FROM Customers
+WHERE Country = 'Germany' or City = 'London';
+
+SELECT customername, country FROM Customers
+WHERE Country = 'Germany' OR Country = 'Spain';
+
+-- Write an SQL query to find customers from the UK and London.
+select * from customers 
+where country = 'UK' and city = 'London';
+
+-- Write an SQL query to find customers from Portland or Kirkland.
+Select *
+From customers
+Where City = 'Portland' or City = 'Kirkland';;
+
+-- The finance team needs to review orders placed before 1996-08-27 or after 1997-02-21 for an audit. Write an SQL query to find those orders.
+select * from orders
+where orderdate < '1996-08-27' or orderdate > '1997-02-21';
+
+
+select customername , country
+from customers
+where customername like 'A%';
+
+select customername , country
+from customers
+where customername like '%a';
+
+-- list of customers based in Berlin, Paris, or Madrid.
+SELECT *
+FROM Customers
+WHERE City IN ('Berlin', 'Paris', 'Madrid');
+
+-- Write an SQL query to find all orders that were shipped by ShipperID 1 or 3 from the Orders table.
+Select * From orders
+Where shipperid in (1,3);
+
+
+select * from orders where shipperID = 1 or shipperID = 3;
+
+-- Customers who have made at least one purchase.
+SELECT customerid, customername 
+FROM customers
+WHERE customerid IN (SELECT DISTINCT customerid FROM orders);
+
+
+SELECT productname , price FROM Products
+WHERE Price BETWEEN 10 AND 20;
+
+SELECT * FROM Products
+WHERE Price NOT BETWEEN 10 AND 20;
+
+SELECT * FROM Products
+WHERE Price BETWEEN 10 AND 20
+AND CategoryID NOT IN (1,2,3);
+
+
+SELECT * FROM Products
+WHERE ProductName BETWEEN 'Carnarvon Tigers' AND 'Mozzarella di Giovanni'
+order by productname desc; 
+
+select customername, city
+from customers
+order by city;
+
+select customername, country
+from customers
+order by country;
+
+
+-- default sorting order is ascending (A-Z, smallest to largest)
+
+select customername, country
+from customers
+order by country desc;
+
+select productname, price
+from products
+order by price;
+
+select productname, price
+from products
+order by price desc;
+
+SELECT customername, country FROM Customers
+ORDER BY Country, CustomerName;
+
+SELECT customername, country FROM Customers
+ORDER BY Country ASC, CustomerName DESC;
+
+SELECT customername, country FROM Customers
+ORDER BY Country ASC, CustomerName DESC
+limit 5;
+
+SELECT * FROM Customers
+LIMIT 3;
+
+SELECT * FROM products
+LIMIT 5;
+
+SELECT * FROM Products
+ORDER BY PRICE 
+LIMIT 5;
+
+-- cheapest
+
+
+SELECT * FROM Customers
+WHERE Country='Germany'
+LIMIT 3;
+
+-- the Products table where the Price is greater than 20, limiting the result to 10 rows.
+SELECT * 
+FROM Products 
+WHERE Price > 20 
+ORDER BY Price DESC 
+LIMIT 10;
+
+-- the first 3 customers from the Customers table who are located in London.
+ SELECT *
+FROM customers
+WHERE city = 'London'
+LIMIT 3;
+
+SELECT MIN(Price) AS SmallestPrice
+FROM Products;
+
+SELECT MAX(Price) AS LargestPrice
+FROM Products;
+
+select avg(price)as avg_price
+from products;
+
+SELECT SUM(Quantity) as total_quantity
+FROM Order_Details;
+
+select avg(price)
+from products;
+
+select avg(price) as avg_price
+from products;
+
+SELECT CustomerID AS ID, CustomerName AS Customer
+FROM Customers;
+
+SELECT CustomerName AS Customer, ContactName AS "Contact Person"
+FROM Customers;
+
+-- you cant make space between words
